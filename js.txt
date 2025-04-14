@@ -1,0 +1,28 @@
+// sendCodeBtn.addEventListener("click", function () {
+//   const email = document.getElementById("recovery-email").value;
+
+//   // التحقق من صحة البريد الإلكتروني
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   if (!emailRegex.test(email)) {
+//     showNotification("يرجى إدخال بريد إلكتروني صالح", "error");
+//     return;
+//   }
+
+//   // إظهار حالة التحميل
+//   setButtonLoading(sendCodeBtn, true);
+
+//   // محاكاة إرسال رمز التحقق (سيتم استبداله بطلب حقيقي)
+//   setTimeout(() => {
+//     setButtonLoading(sendCodeBtn, false);
+//     showNotification("تم إرسال رمز التحقق إلى بريدك الإلكتروني", "success");
+
+//     // الانتقال إلى الخطوة التالية
+//     goToStep("step-email", "step-verify");
+
+//     // تركيز على أول حقل إدخال
+//     verificationInputs[0].focus();
+
+//     // بدء العد التنازلي
+//     startCountdown(5 * 60); // 5 دقائق
+//   }, 1500);
+// });

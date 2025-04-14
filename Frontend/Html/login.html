@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="../Css/login.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background-effect">
+      <div class="background-circle circle-1"></div>
+      <div class="background-circle circle-2"></div>
+    </div>
+
+    <div class="container">
+      <h1>تسجيل الدخول</h1>
+
+      <form id="login-form" autocomplete="on">
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="أدخل بريدك الإلكتروني"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">كلمة المرور</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="أدخل كلمة المرور"
+            required
+            autocomplete="current-password"
+          />
+          <span
+            class="password-toggle"
+            id="password-toggle"
+            aria-label="إظهار/إخفاء كلمة المرور"
+            role="button"
+            tabindex="0"
+          >
+            <i class="far fa-eye" id="password-icon" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <label class="checkbox-container">
+          <input type="checkbox" id="remember" name="remember" />
+          <span class="checkmark"></span>
+          <span class="checkbox-label">تذكرني</span>
+        </label>
+
+        <button
+          type="submit"
+          class="btn btn-login"
+          id="login-button"
+          aria-label="تسجيل الدخول"
+        >
+          <i class="fas fa-sign-in-alt icon" aria-hidden="true"></i>
+          <span class="btn-text">تسجيل الدخول</span>
+          <div class="btn-loader"></div>
+        </button>
+      </form>
+
+      <div class="forgot-password">
+        <a href="#" id="forgot-password">نسيت كلمة المرور؟</a>
+      </div>
+
+      <div class="option-divider">
+        <span class="option-divider-text">أو</span>
+      </div>
+
+      <button
+        class="btn btn-google"
+        id="google-login"
+        aria-label="تسجيل الدخول بواسطة Google"
+      >
+        <i class="fab fa-google icon" aria-hidden="true"></i>
+        <span class="btn-text">تسجيل الدخول بواسطة Google</span>
+        <div class="btn-loader"></div>
+      </button>
+
+      <button
+        class="btn btn-discord"
+        id="discord-login"
+        aria-label="تسجيل الدخول بواسطة Discord"
+      >
+        <i class="fab fa-discord icon" aria-hidden="true"></i>
+        <span class="btn-text">تسجيل الدخول بواسطة Discord</span>
+        <div class="btn-loader"></div>
+      </button>
+
+      <div class="signup-link">
+        ليس لديك حساب؟
+        <a href="signup.html" id="signup-link">إنشاء حساب جديد</a>
+      </div>
+    </div>
+
+    <!-- نافذة نسيت كلمة المرور -->
+    <div id="forgot-password-modal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close" id="close-modal">&times;</span>
+        <h2>استعادة كلمة المرور</h2>
+        <p class="modal-subtitle">
+          أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور
+        </p>
+
+        <div id="forgot-steps">
+          <!-- الخطوة 1: إدخال البريد الإلكتروني -->
+          <div class="step" id="step-email">
+            <div class="form-group">
+              <label for="recovery-email">البريد الإلكتروني</label>
+              <input
+                type="email"
+                id="recovery-email"
+                placeholder="أدخل بريدك الإلكتروني"
+                required
+              />
+            </div>
+            <button class="btn btn-login" id="send-code-btn">
+              <i class="fas fa-paper-plane icon"></i>
+              <span class="btn-text">إرسال رمز التحقق</span>
+              <div class="btn-loader"></div>
+            </button>
+          </div>
+
+          <!-- الخطوة 2: إدخال رمز التحقق -->
+          <div class="step" id="step-verify" style="display: none">
+            <div class="form-group">
+              <label for="verification-code">رمز التحقق</label>
+              <div class="verification-code-container">
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="verification-input"
+                  data-index="0"
+                />
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="verification-input"
+                  data-index="1"
+                />
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="verification-input"
+                  data-index="2"
+                />
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="verification-input"
+                  data-index="3"
+                />
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="verification-input"
+                  data-index="4"
+                />
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="verification-input"
+                  data-index="5"
+                />
+              </div>
+              <div class="resend-code">
+                <span id="countdown-timer">05:00</span>
+                <button id="resend-code-btn" disabled>إعادة إرسال الرمز</button>
+              </div>
+            </div>
+            <button class="btn btn-login" id="verify-code-btn">
+              <i class="fas fa-check-circle icon"></i>
+              <span class="btn-text">تحقق من الرمز</span>
+              <div class="btn-loader"></div>
+            </button>
+          </div>
+
+          <!-- الخطوة 3: إنشاء كلمة مرور جديدة -->
+          <div class="step" id="step-reset" style="display: none">
+            <div class="form-group">
+              <label for="new-password">كلمة المرور الجديدة</label>
+              <input
+                type="password"
+                id="new-password"
+                placeholder="أدخل كلمة المرور الجديدة"
+                required
+              />
+              <span class="password-toggle" id="new-password-toggle">
+                <i class="far fa-eye" id="new-password-icon"></i>
+              </span>
+              <div class="password-strength">
+                <div class="strength-meter">
+                  <div
+                    class="strength-meter-fill"
+                    id="strength-meter-fill"
+                  ></div>
+                </div>
+                <div class="strength-text" id="strength-text">
+                  قوة كلمة المرور
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="confirm-password">تأكيد كلمة المرور</label>
+              <input
+                type="password"
+                id="confirm-password"
+                placeholder="أعد إدخال كلمة المرور الجديدة"
+                required
+              />
+              <span class="password-toggle" id="confirm-password-toggle">
+                <i class="far fa-eye" id="confirm-password-icon"></i>
+              </span>
+            </div>
+
+            <button class="btn btn-login" id="reset-password-btn">
+              <i class="fas fa-key icon"></i>
+              <span class="btn-text">تعيين كلمة المرور الجديدة</span>
+              <div class="btn-loader"></div>
+            </button>
+          </div>
+
+          <!-- الخطوة 4: تم بنجاح -->
+          <div class="step" id="step-success" style="display: none">
+            <div class="success-animation">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>تم إعادة تعيين كلمة المرور بنجاح!</h3>
+            <p>يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة</p>
+            <button class="btn btn-login" id="back-to-login-btn">
+              <i class="fas fa-sign-in-alt icon"></i>
+              <span class="btn-text">العودة لتسجيل الدخول</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../Script/login.js"></script>
+  </body>
+</html>

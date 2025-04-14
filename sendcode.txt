@@ -1,0 +1,38 @@
+  // إرسال الرمز للسيرفر
+  fetch("http://localhost:5500/api/send-verification-code", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      code: verificationCode,
+    }),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("فشل في إرسال الطلب");
+      return res.json();
+    })
+    .then((data) => {
+      setButtonLoading(sendCodeBtn, false);
+
+      if (data.success) {
+        showNotification("تم إرسال رمز التحقق إلى بريدك الإلكتروني", "success");
+
+        // الانتقال إلى الخطوة التالية
+        goToStep("step-email", "step-verify");
+
+        // تركيز على أول حقل إدخال
+        verificationInputs[0].focus();
+
+        // بدء العد التنازلي
+        startCountdown(5 * 60); // 5 دقائق
+      } else {
+        showNotification("حدث خطأ أثناء الإرسال، حاول مرة أخرى", "error");
+      }
+    })
+    .catch((err) => {
+      setButtonLoading(sendCodeBtn, false);
+      console.error("Error:", err);
+      showNotification("حدث خطأ في الاتصال بالخادم", "error");
+    });

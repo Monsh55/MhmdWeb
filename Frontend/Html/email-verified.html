@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تم التحقق من البريد الإلكتروني</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #000000, #0a1c0a);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        direction: rtl;
+        padding: 20px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 400px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 15px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+      }
+
+      .container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 200, 0, 0.15);
+      }
+
+      .success-icon {
+        font-size: 70px;
+        color: #0bac0b;
+        margin-bottom: 20px;
+        animation: successPulse 1.3s ease-in-out infinite alternate;
+      }
+
+      @keyframes successPulse {
+        from {
+          transform: scale(1);
+          opacity: 0.85;
+        }
+        to {
+          transform: scale(1.06);
+          opacity: 1;
+        }
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 28px;
+        color: #ffffff;
+        position: relative;
+      }
+
+      h1::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: #0bac0b;
+        transition: width 0.5s ease;
+      }
+
+      .container:hover h1::after {
+        width: 100px;
+      }
+
+      .message {
+        color: #b8b8b8;
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+
+      .btn-login {
+        background: linear-gradient(135deg, #064d06, #098009);
+        color: white;
+        box-shadow: 0 4px 10px rgba(0, 80, 0, 0.3);
+      }
+
+      .btn-login:hover {
+        background: linear-gradient(135deg, #076b07, #0bac0b);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 100, 0, 0.4);
+      }
+
+      .icon {
+        margin-left: 10px;
+        font-size: 18px;
+      }
+
+      .background-effect {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .background-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 255, 0, 0.05) 0%,
+          transparent 70%
+        );
+      }
+
+      .circle-1 {
+        width: 600px;
+        height: 600px;
+        top: -200px;
+        left: -200px;
+      }
+
+      .circle-2 {
+        width: 500px;
+        height: 500px;
+        bottom: -200px;
+        right: -100px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px 15px;
+        }
+
+        h1 {
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+
+        .btn {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-effect">
+      <div class="background-circle circle-1"></div>
+      <div class="background-circle circle-2"></div>
+    </div>
+
+    <div class="container">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h1>تم التحقق من البريد الإلكتروني</h1>
+      <p class="message">
+        تهانينا! تم التحقق من بريدك الإلكتروني بنجاح، يمكنك الآن تسجيل الدخول للوصول إلى حسابك
+      </p>
+      <a href="/login.html" class="btn btn-login">
+        <i class="fas fa-sign-in-alt icon"></i>
+        <span>تسجيل الدخول الآن</span>
+      </a>
+    </div>
+  </body>
+</html>
